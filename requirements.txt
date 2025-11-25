@@ -1,0 +1,39 @@
+# Dependencias principales
+Pillow>=10.0.0
+
+# Drag & drop funcional (opcional pero recomendado)
+tkinterdnd2>=0.3.0
+
+# Formatos especiales (opcionales)
+# Instalar según necesidad:
+
+# Para HEIC/HEIF
+pillow-heif>=0.10.0
+
+# Para AVIF
+pillow-avif-plugin>=1.3.0
+
+# Para SVG y EPS (requiere ImageMagick)
+Wand>=0.6.10
+
+# Para PSD
+psd-tools>=1.9.0
+
+# Para FITS (astronomía)
+astropy>=5.0.0
+
+# Para PDF creation
+reportlab>=4.0.0
+
+# Para conversión PDF a imagen
+pdf2image>=1.17.0
+
+# Para formatos adicionales
+imageio>=2.25.0
+
+# Para análisis de imágenes
+numpy>=1.21.0
+
+# Para interfaz mejorada (opcional)
+ttkthemes>=3.2.0
+
