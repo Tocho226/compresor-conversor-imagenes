@@ -15,6 +15,7 @@ PROBLEMAS SOLUCIONADOS:
 """
 
 import sys
+import io
 import os
 import tkinter as tk
 from tkinter import messagebox
