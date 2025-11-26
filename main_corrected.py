@@ -20,9 +20,11 @@ import os
 import tkinter as tk
 from tkinter import messagebox
 
-# Forzar UTF-8 en Windows para evitar errores con emojis
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+# Forzar UTF-8 solo si stdout existe (PyInstaller --windowed usa None)
+if sys.stdout is not None and hasattr(sys.stdout, "buffer"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+if sys.stderr is not None and hasattr(sys.stderr, "buffer"):
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 # Añadir el directorio actual al path para imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
