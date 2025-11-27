@@ -15,43 +15,50 @@ PROBLEMAS SOLUCIONADOS:
 """
 
 import sys
-import io
 import os
 import tkinter as tk
 from tkinter import messagebox
 
-# Forzar UTF-8 solo si stdout existe (PyInstaller --windowed usa None)
-if sys.stdout is not None and hasattr(sys.stdout, "buffer"):
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-if sys.stderr is not None and hasattr(sys.stderr, "buffer"):
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 # Añadir el directorio actual al path para imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
+# def check_dependencies():
+#     """Verifica e instala dependencias necesarias."""
+#     try:
+#         from core.format_handler import FormatHandler
+#         print("🔧 Verificando dependencias...")
+#         FormatHandler.install_dependencies()
+#         FormatHandler.setup_all_plugins()
+#         print("✅ Dependencias verificadas")
+#         return True
+#     except Exception as e:
+#         print(f"❌ Error verificando dependencias: {e}")
+#         return False
+
 def check_dependencies():
-    """Verifica e instala dependencias necesarias."""
+    """Verifica dependencias SIN instalar nada en EXE."""
     try:
         from core.format_handler import FormatHandler
-        print("🔧 Verificando dependencias...")
-        FormatHandler.install_dependencies()
-        FormatHandler.setup_all_plugins()
-        print("✅ Dependencias verificadas")
         return True
     except Exception as e:
-        print(f"❌ Error verificando dependencias: {e}")
         return False
+
 
 def main():
     """Función principal de la aplicación CORREGIDA."""
     try:
-        print("🎨 Iniciando Compresor Avanzado de Imágenes v9.1 - CORREGIDO...")
-        print("🔧 TODOS los problemas específicos han sido solucionados")
+    #     print("🎨 Iniciando Compresor Avanzado de Imágenes v9.1 - CORREGIDO...")
+    #     print("🔧 TODOS los problemas específicos han sido solucionados")
+        print("Iniciando Compresor Avanzado de Imágenes v9.1 - CORREGIDO...")
+        print("TODOS los problemas específicos han sido solucionados")
         
         # Verificar dependencias
         if not check_dependencies():
-            print("⚠️ Algunas dependencias no están disponibles, pero la aplicación funcionará con funcionalidad básica")
-        
+            # print("⚠️ Algunas dependencias no están disponibles, pero la aplicación funcionará con funcionalidad básica")
+
+            print("Algunas dependencias no están disponibles, pero la aplicación funcionará con funcionalidad básica")
+
         # Importar y crear la aplicación GUI CORREGIDA
         from gui.app import ImageCompressorApp
         
@@ -59,21 +66,29 @@ def main():
         try:
             import tkinterdnd2 as tkdnd
             root = tkdnd.Tk()
-            print("✅ Ventana con soporte DnD creada")
+            # print("✅ Ventana con soporte DnD creada")
+            print("Ventana con soporte DnD creada")
+
         except ImportError:
+
             root = tk.Tk()
-            print("⚠️ tkinterdnd2 no disponible, usando Tk normal")
+            # print("⚠️ tkinterdnd2 no disponible, usando Tk normal")
+            print("tkinterdnd2 no disponible, usando Tk normal")
         
         # Configurar manejo de errores de tkinter
         def handle_tk_error(exc, val, tb):
             error_str = str(val)
             if "tkdnd" in error_str or "drop_target" in error_str:
-                print(f"⚠️ Error de drag & drop: {val}")
-                print("⚠️ Continuando con funcionalidad de clic...")
-                return
+                # print(f"⚠️ Error de drag & drop: {val}")
+                # print("⚠️ Continuando con funcionalidad de clic...")
+                print(f"Error de drag & drop: {val}")
+                print("Continuando con funcionalidad de clic...")
+                
+                 return
             else:
                 # Error más serio
-                print(f"❌ Error inesperado: {val}")
+                # print(f"❌ Error inesperado: {val}")
+                print(f"Error inesperado: {val}")
                 try:
                     messagebox.showerror("Error", f"Error inesperado: {val}")
                 except:
@@ -85,9 +100,12 @@ def main():
         # Crear aplicación CORREGIDA
         app = ImageCompressorApp(root)
         
-        print("✅ Aplicación CORREGIDA iniciada correctamente")
-        print("📖 Usa F1 para ayuda, Ctrl+O para abrir archivos, Ctrl+S para comprimir")
-        print("🎯 TODAS las funcionalidades han sido corregidas y mejoradas")
+        # print("✅ Aplicación CORREGIDA iniciada correctamente")
+        # print("📖 Usa F1 para ayuda, Ctrl+O para abrir archivos, Ctrl+S para comprimir")
+        # print("🎯 TODAS las funcionalidades han sido corregidas y mejoradas")
+        print("Aplicación CORREGIDA iniciada correctamente")
+        print("Usa F1 para ayuda, Ctrl+O para abrir archivos, Ctrl+S para comprimir")
+        print("TODAS las funcionalidades han sido corregidas y mejoradas")
         
         # Configurar cierre
         root.protocol("WM_DELETE_WINDOW", app.on_closing)
@@ -97,7 +115,8 @@ def main():
         
     except ImportError as e:
         error_msg = f"Error importando módulos: {e}\n\nAsegúrate de que todos los archivos estén en el mismo directorio."
-        print(f"❌ {error_msg}")
+        # print(f"❌ {error_msg}")
+        print(f" {error_msg}")
         
         # Mostrar error en GUI si es posible
         try:
@@ -111,7 +130,8 @@ def main():
         
     except Exception as e:
         error_msg = f"Error inesperado: {e}"
-        print(f"❌ {error_msg}")
+        # print(f"❌ {error_msg}")
+        print(f" {error_msg}")
         
         # Mostrar error en GUI si es posible
         try:
