@@ -64,7 +64,7 @@ jobs:
           pyinstaller --noconfirm --onefile --windowed \
           --hidden-import=PIL._tkinter_finder \
           --hidden-import=PIL.ImageTk \
-          --name ConversorCompresor-linux \
+          --name ConversorCompresor \
           main_corrected.py
 
       - name: Upload artifact
