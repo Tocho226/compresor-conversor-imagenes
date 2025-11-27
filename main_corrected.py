@@ -36,12 +36,39 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 #         print(f"❌ Error verificando dependencias: {e}")
 #         return False
 
+# Para hacer el ejecutable de windows este apartado esta bien
+# def check_dependencies():
+#     """Verifica dependencias SIN instalar nada en EXE."""
+#     try:
+#         from core.format_handler import FormatHandler
+#         return True
+#     except Exception as e:
+#         return False
+
+#Para hacer el ejecutable de linux
+
 def check_dependencies():
-    """Verifica dependencias SIN instalar nada en EXE."""
+    """Verifica dependencias sin intentar instalar en ejecutables."""
     try:
         from core.format_handler import FormatHandler
+        print("🔧 Verificando dependencias...")
+
+        # Detectar si estamos en un ejecutable (PyInstaller)
+        is_frozen = getattr(sys, 'frozen', False)
+
+        if is_frozen:
+            print("⚠️ Ejecutable detectado: NO se instalarán dependencias.")
+            FormatHandler.setup_all_plugins()
+        else:
+            # Solo en modo desarrollo
+            FormatHandler.install_dependencies()
+            FormatHandler.setup_all_plugins()
+
+        print("✅ Dependencias verificadas")
         return True
+
     except Exception as e:
+        print(f"❌ Error verificando dependencias: {e}")
         return False
 
 
