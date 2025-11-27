@@ -28,13 +28,10 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --noconfirm --onefile main_corrected.py
-
+          pyinstaller --noconfirm --onefile --name ConversorCompresor main_corrected.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ConversorCompresor-windows
           path: dist/ConversorCompresor.exe
-
-
