@@ -61,7 +61,7 @@ jobs:
       - name: Build executable
         run: |
 
-          pyinstaller --noconfirm --onefile --windowed\
+          pyinstaller --noconfirm --onefile --windowed \
           --hidden-import=PIL._tkinter_finder \
           --hidden-import=PIL.ImageTk \
           --name ConversorCompresor-linux \
