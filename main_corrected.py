@@ -84,7 +84,7 @@ def main():
                 print(f"Error de drag & drop: {val}")
                 print("Continuando con funcionalidad de clic...")
                 
-                 return
+                return
             else:
                 # Error más serio
                 # print(f"❌ Error inesperado: {val}")
