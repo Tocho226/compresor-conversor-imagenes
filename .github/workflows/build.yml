@@ -23,6 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
+          pip cache purge
           pip install -r requirements.txt
           pip install pyinstaller
 
@@ -51,16 +53,19 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
+          pip cache purge
           pip install -r requirements.txt
           pip install pyinstaller
 
       - name: Build executable
         run: |
 
-          pyinstaller --noconfirm --onefile \
+          pyinstaller --noconfirm --onefile --windowed\
           --hidden-import=PIL._tkinter_finder \
           --hidden-import=PIL.ImageTk \
-          --windowed --icon=icono.ico --name ConversorCompresor-linux main_corrected.py
+          --name ConversorCompresor-linux \
+          main_corrected.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
