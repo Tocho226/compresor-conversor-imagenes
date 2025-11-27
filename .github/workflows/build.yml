@@ -28,7 +28,7 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --noconfirm --onefile --windowed --name ConversorCompresor main_corrected.py
+          pyinstaller --noconfirm --onefile --windowed --icon=icono.ico --name ConversorCompresor main_corrected.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

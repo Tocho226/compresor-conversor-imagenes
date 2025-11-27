@@ -74,6 +74,9 @@ def main():
             root = tk.Tk()
             # print("⚠️ tkinterdnd2 no disponible, usando Tk normal")
             print("tkinterdnd2 no disponible, usando Tk normal")
+
+        root.state("zoomed")  # Abrir maximizada automáticamente
+    
         
         # Configurar manejo de errores de tkinter
         def handle_tk_error(exc, val, tb):
