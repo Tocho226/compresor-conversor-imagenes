@@ -102,7 +102,14 @@ def main():
             # print("⚠️ tkinterdnd2 no disponible, usando Tk normal")
             print("tkinterdnd2 no disponible, usando Tk normal")
 
-        root.state("zoomed")  # Abrir maximizada automáticamente
+#        root.state("zoomed")  # Abrir maximizada automáticamente #solo funciona para expandir la ventana en windows
+        # Maximizar ventana de forma compatible con Windows, Linux y Mac
+        try:
+            root.state("zoomed")  # Windows
+        except:
+            root.attributes("-zoomed", True)  # Algunas distros Linux
+            root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}")  # Fallback universal
+
     
         
         # Configurar manejo de errores de tkinter
