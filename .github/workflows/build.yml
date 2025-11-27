@@ -57,6 +57,10 @@ jobs:
       - name: Build executable
         run: |
           pyinstaller --onefile --windowed --icon=icono.ico --name ConversorCompresor main_corrected.py
+          pyinstaller --noconfirm --onefile \
+          --hidden-import=PIL._tkinter_finder \
+          --hidden-import=PIL.ImageTk \
+          --windowed --icon=icono.ico --name ConversorCompresor-linux main_corrected.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
